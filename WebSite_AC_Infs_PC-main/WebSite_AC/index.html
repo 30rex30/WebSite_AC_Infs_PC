@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11º Renato | Montagem, Cuidados e Componentes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #3b82f6;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --gray-color: #64748b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.831);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-color), #334155);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            margin-bottom: 60px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            background-color: var(--secondary-color);
+        }
+
+        /* Sections Common */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cuidados Section */
+        .cuidados {
+            margin-bottom: 80px;
+        }
+
+        .cuidados-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .cuidado-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cuidado-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .cuidado-icon {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .cuidado-icon.cuidado-1 {
+            background-color: var(--danger-color);
+        }
+
+        .cuidado-icon.cuidado-2 {
+            background-color: var(--warning-color);
+        }
+
+        .cuidado-icon.cuidado-3 {
+            background-color: var(--success-color);
+        }
+
+        .cuidado-icon.cuidado-4 {
+            background-color: var(--primary-color);
+        }
+
+        .cuidado-content {
+            padding: 25px;
+        }
+
+        .cuidado-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .cuidado-content p {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+        }
+
+        /* Material Section */
+        .material {
+            background-color: white;
+            padding: 80px 0;
+            margin-bottom: 80px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .material-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .material-img {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .material-content {
+            flex: 1;
+        }
+
+        .material-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .material-content p {
+            color: var(--gray-color);
+            margin-bottom: 25px;
+        }
+
+        .material-list {
+            list-style: none;
+        }
+
+        .material-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 15px;
+            background-color: #f8fafc;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .material-list i {
+            color: var(--primary-color);
+            margin-top: 5px;
+            font-size: 1.2rem;
+        }
+
+        /* Componentes Section */
+        .components-section {
+            margin-bottom: 80px;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .component-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .component-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .component-icon {
+            background-color: var(--primary-color);
+            color: white;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .component-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .component-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .component-content p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .component-type {
+            display: inline-block;
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background-color: #dbeafe;
+            margin-top: 10px;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        th {
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        td {
+            padding: 20px;
+        }
+
+        .recomendado {
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .nao-recomendado {
+            background-color: #fee2e2;
+            color: #991b1b;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .git {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .git a {
+            color: var(--primary-color);
+            background-color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .git a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .material-container {
+                flex-direction: column;
+            }
+            
+            .material-img {
+                width: 100%;
+                min-height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cuidados-container,
+            .components-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-desktop"></i>
+                <span>PC Build Guide</span>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul>
+                    <li><a href="#cuidados">Cuidados</a></li>
+                    <li><a href="#material">Material</a></li>
+                    <li><a href="#componentes">Componentes</a></li>
+                    <li><a href="#comparacao">Comparação</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Guia Completo para Montar seu PC</h1>
+            <p>Aprenda os cuidados essenciais, materiais necessários e conheça todos os componentes para montar um computador seguro e eficiente.</p>
+            <a href="#cuidados" class="cta-button">Começar a Explorar <i class="fas fa-arrow-down"></i></a>
+        </div>
+    </section>
+
+    <!-- Cuidados Section -->
+    <section id="cuidados" class="cuidados container">
+        <div class="section-title">
+            <h2>Cuidados Essenciais na Montagem</h2>
+            <p>Antes de começar a montar seu PC, é fundamental tomar alguns cuidados para evitar danos aos componentes e garantir uma montagem segura.</p>
+        </div>
+        
+        <div class="cuidados-container">
+            <!-- Cuidado 1 -->
+            <div class="cuidado-card">
+                <div class="cuidado-icon cuidado-1">
+                    <i class="fas fa-hand-paper"></i>
+                </div>
+                <div class="cuidado-content">
+                    <h3>Descarga Eletrostática (ESD)</h3>
+                    <p>Sempre use uma pulseira antiestática conectada a uma superfície metálica aterrada. Toque em uma parte metálica do gabinete antes de manusear componentes sensíveis.</p>
+                    <p>A eletricidade estática pode danificar irreversivelmente processadores, memórias e placas-mãe.</p>
+                </div>
+            </div>
+            
+            <!-- Cuidado 2 -->
+            <div class="cuidado-card">
+                <div class="cuidado-icon cuidado-2">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="cuidado-content">
+                    <h3>Organização do Espaço</h3>
+                    <p>Prepare uma área limpa, bem iluminada e com espaço suficiente para trabalhar. Mantenha todos os componentes em suas embalagens antiestáticas até o momento da instalação.</p>
+                    <p>Evite trabalhar sobre superfícies que acumulam estática, como carpetes.</p>
+                </div>
+            </div>
+            
+            <!-- Cuidado 3 -->
+            <div class="cuidado-card">
+                <div class="cuidado-icon cuidado-3">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="cuidado-content">
+                    <h3>Leia os Manuais</h3>
+                    <p>Consulte os manuais de todos os componentes, especialmente da placa-mãe. Cada fabricante pode ter especificações e procedimentos ligeiramente diferentes.</p>
+                    <p>Verifique a compatibilidade entre os componentes antes da compra.</p>
+                </div>
+            </div>
+            
+            <!-- Cuidado 4 -->
+            <div class="cuidado-card">
+                <div class="cuidado-icon cuidado-4">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="cuidado-content">
+                    <h3>Gerenciamento de Cabos</h3>
+                    <p>Planeje a rota dos cabos antes de conectá-los. Use abraçadeiras para organizar os cabos e melhorar o fluxo de ar dentro do gabinete.</p>
+                    <p>Cabos desorganizados prejudicam a refrigeração e dificultam futuras manutenções.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Material Section -->
+    <section id="material" class="material">
+        <div class="container">
+            <div class="section-title">
+                <h2>Material Necessário para Montagem</h2>
+                <p>Tenha à mão todas as ferramentas e acessórios necessários antes de começar a montar seu PC.</p>
+            </div>
+            
+            <div class="material-container">
+                <div class="material-img">
+                    <i class="fas fa-toolbox" style="font-size: 8rem; color: var(--primary-color);"></i>
+                </div>
+                
+                <div class="material-content">
+                    <h3>Ferramentas e Acessórios Essenciais</h3>
+                    <p>Para uma montagem profissional e sem contratempos, você precisará dos seguintes itens:</p>
+                    
+                    <ul class="material-list">
+                        <li>
+                            <i class="fas fa-screwdriver"></i>
+                            <div><strong>Chave de Fenda Phillips:</strong> A ferramenta mais importante. Prefira uma magnética para facilitar o manuseio dos parafusos.</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-lightbulb"></i>
+                            <div><strong>Fonte de Luz Adequada:</strong> Uma lanterna ou luminária auxiliar para iluminar o interior do gabinete.</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-th"></i>
+                            <div><strong>Organizador de Peças:</strong> Recipiente com divisórias para separar parafusos e componentes pequenos.</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <div><strong>Pinça de Precisão:</strong> Útil para colocar parafusos em locais de difícil acesso.</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-wind"></i>
+                            <div><strong>Ar Comprimido ou Soprador:</strong> Para limpar poeira dos componentes antes da instalação.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Componentes Section -->
+    <section id="componentes" class="components-section container">
+        <div class="section-title">
+            <h2>Componentes de um PC</h2>
+            <p>Conheça todos os componentes necessários para montar um computador completo e funcional.</p>
+        </div>
+        
+        <div class="components-grid">
+            <!-- Component 1 -->
+            <div class="component-card">
+                <div class="component-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="component-content">
+                    <h3>Processador (CPU)</h3>
+                    <p>O cérebro do computador, executa instruções e processa dados. Define em grande parte o desempenho do sistema.</p>
+                    <span class="component-type">Componente Principal</span>
+                </div>
+            </div>
+            
+            <!-- Component 2 -->
+            <div class="component-card">
+                <div class="component-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="component-content">
+                    <h3>Placa-mãe (Motherboard)</h3>
+                    <p>Conecta todos os componentes do sistema. Define quais processadores e memórias são compatíveis.</p>
+                    <span class="component-type">Componente Principal</span>
+                </div>
+            </div>
+            
+            <!-- Component 3 -->
+            <div class="component-card">
+                <div class="component-icon">
+                    <i class="fas fa-memory"></i>
+                </div>
+                <div class="component-content">
+                    <h3>Memória RAM</h3>
+                    <p>Armazenamento temporário de dados em uso. Afeta diretamente a multitarefa e desempenho geral.</p>
+                    <span class="component-type">Componente Principal</span>
+                </div>
+            </div>
+            
+            <!-- Component 4 -->
+            <div class="component-card">
+                <div class="component-icon">
+                    <i class="fas fa-hdd"></i>
+                </div>
+                <div class="component-content">
+                    <h3>Armazenamento (SSD/HDD)</h3>
+                    <p>Armazena sistema operacional, programas e arquivos permanentemente. SSDs são mais rápidos que HDDs.</p>
+                    <span class="component-type">Componente Principal</span>
+                </div>
+            </div>
+            
+            <!-- Component 5 -->
+            <div class="component-card">
+                <div class="component-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="component-content">
+                    <h3>Placa de Vídeo (GPU)</h3>
+                    <p>Processa gráficos e imagens. Essencial para jogos, edição de vídeo e aplicações 3D.</p>
+                    <span class="component-type">Componente Secundário</span>
+                </div>
+            </div>
+            
+            <!-- Component 6 -->
+            <div class="component-card">
+                <div class="component-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="component-content">
+                    <h3>Fonte de Alimentação (PSU)</h3>
+                    <p>Fornece energia estável para todos os componentes. Escolha uma fonte de qualidade com wattagem adequada.</p>
+                    <span class="component-type">Componente Principal</span>
+                </div>
+            </div>
+            
+            <!-- Component 7 -->
+            <div class="component-card">
+                <div class="component-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <div class="component-content">
+                    <h3>Gabinete (Case)</h3>
+                    <p>Protege e organiza todos os componentes. Considerar fluxo de ar, espaço e conectividade frontal.</p>
+                    <span class="component-type">Componente Secundário</span>
+                </div>
+            </div>
+            
+            <!-- Component 8 -->
+            <div class="component-card">
+                <div class="component-icon">
+                    <i class="fas fa-fan"></i>
+                </div>
+                <div class="component-content">
+                    <h3>Sistema de Resfriamento</h3>
+                    <p>Mantém temperaturas seguras. Pode ser air cooler ou water cooling. Inclui ventoinhas do gabinete.</p>
+                    <span class="component-type">Componente Secundário</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="comparacao" class="container">
+        <div class="section-title">
+            <h2>Comparação: SSD vs HDD</h2>
+            <p>Entenda as diferenças entre os dois principais tipos de armazenamento para escolher o ideal para suas necessidades.</p>
+        </div>
+        
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>SSD (Unidade de Estado Sólido)</th>
+                        <th>HDD (Disco Rígido)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Velocidade</strong></td>
+                        <td><span class="recomendado">Muito Rápido</span> (até 550 MB/s SATA, 7000 MB/s NVMe)</td>
+                        <td><span class="nao-recomendado">Lento</span> (até 160 MB/s)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Durabilidade</strong></td>
+                        <td><span class="recomendado">Alta</span> (sem partes móveis)</td>
+                        <td><span class="nao-recomendado">Média</span> (discos magnéticos sensíveis)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Consumo Energético</strong></td>
+                        <td><span class="recomendado">Baixo</span> (2-5W)</td>
+                        <td><span class="nao-recomendado">Alto</span> (6-15W)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ruído</strong></td>
+                        <td><span class="recomendado">Silencioso</span></td>
+                        <td><span class="nao-recomendado">Audível</span> (discos girando)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Custo por GB</strong></td>
+                        <td><span class="nao-recomendado">Alto</span></td>
+                        <td><span class="recomendado">Baixo</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Recomendação</strong></td>
+                        <td>Sistema operacional, programas e jogos</td>
+                        <td>Armazenamento massivo de arquivos</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div style="margin-top: 40px; background-color: #e0f2fe; padding: 25px; border-radius: 15px; border-left: 5px solid var(--primary-color);">
+            <h3 style="margin-bottom: 15px; color: var(--dark-color);"><i class="fas fa-lightbulb" style="color: var(--warning-color); margin-right: 10px;"></i> Dica Profissional</h3>
+            <p style="color: var(--dark-color);">Para otimizar custo e desempenho, monte seu PC com um SSD para o sistema operacional e programas principais, e um HDD de maior capacidade para armazenar arquivos, fotos, vídeos e jogos menos exigentes.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h4>11ºG Renato</h4>
+                    <p>Seu guia completo para montagem e manutenção de computadores. Informações precisas e atualizadas para entusiastas e iniciantes.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#cuidados">Cuidados na Montagem</a></li>
+                        <li><a href="#material">Material Necessário</a></li>
+                        <li><a href="#componentes">Componentes do PC</a></li>
+                        <li><a href="#comparacao">Comparação SSD/HDD</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <div class="copyright">
+                &copy; 2026 11ºG Renato Todos os direitos reservados.
+            </div>
+            <div class="git">
+                <a href="https://github.com/30rex30" target="_blank">Visite meu GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav ul');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            
+            if (nav.style.display === 'flex') {
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '100%';
+                nav.style.left = '0';
+                nav.style.width = '100%';
+                nav.style.backgroundColor = 'white';
+                nav.style.padding = '20px';
+                nav.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+                nav.style.gap = '20px';
+                nav.style.zIndex = '1000';
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if(window.innerWidth <= 768) {
+                        nav.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Add active class to nav items on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if(scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
