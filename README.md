@@ -1,6 +1,6 @@
 <div align="center">
 
-# 💻 PC Essentials!
+# 💻 PC Essentials!!
 
 ### Guia Interativo de Componentes Essenciais de Computadores
 
